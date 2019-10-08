@@ -5,5 +5,5 @@ module.exports = {
   //   ? '/socialtrading/'
   //   : '/',
   // outputDir: 'docs',
-  assets: 'assets',
+  // assets: 'assets',
 };
