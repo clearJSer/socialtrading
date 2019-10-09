@@ -1,8 +1,8 @@
 <template>
   <main>
       <Header></Header>
-        <router-view />
-      <Footer></Footer>
+      <router-view />
+      <!-- <Footer></Footer> -->
   </main>
 </template>
 <script lang="ts">
@@ -22,5 +22,6 @@ export default class Main extends Vue {}
 <style lang="scss" scoped>
 main{
   // background: red;
+  height: 100%;
 }
 </style>

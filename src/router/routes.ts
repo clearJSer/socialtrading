@@ -16,7 +16,7 @@ export default [
         path: '/home',
         name: 'home',
         meta: {},
-        component: () => import('../views/Home.vue'),
+        component: () => import(/* webpackChunkName: 'home' */ '../views/Home.vue'),
       },
     ],
   },
