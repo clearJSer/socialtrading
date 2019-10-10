@@ -3,8 +3,8 @@
     <div class="left">
       <div class="logo">LOGO</div>
       <ul class="header__box__left__item">
-        <li><a href="">首页</a></li>
-        <li><a href="">数据</a></li>
+        <li><router-link to="/home">首页</router-link></li>
+        <li><router-link to="/data">数据</router-link></li>
       </ul>
     </div>
     <div class="right">
