@@ -5,6 +5,7 @@
       <ul class="header__box__left__item">
         <li><router-link to="/home">首页</router-link></li>
         <li><router-link to="/data">数据</router-link></li>
+        <li><router-link to="/test">测试</router-link></li>
       </ul>
     </div>
     <div class="right">
@@ -31,8 +32,8 @@
   </header>
 </template>
 <script lang="ts">
-import Vue from 'vue';
-
+import { Component, Prop, Vue } from 'vue-property-decorator';
+@Component
 export default class Header extends Vue {
   private handleCommand(obj:object) {
     console.log(this, obj);

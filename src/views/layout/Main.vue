@@ -1,8 +1,10 @@
 <template>
   <main>
       <Header></Header>
-      <router-view />
-      <!-- <Footer></Footer> -->
+      <div class="router-view__box">
+        <router-view />
+      </div>
+      <Footer></Footer>
   </main>
 </template>
 <script lang="ts">
@@ -23,5 +25,10 @@ export default class Main extends Vue {}
 main{
   // background: red;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  .router-view__box{
+    flex: 1;
+  }
 }
 </style>
