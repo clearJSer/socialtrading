@@ -78,7 +78,7 @@
 </template>
 <script lang="ts">
 import {
-  Component, Prop, Vue, Filters,
+  Component, Prop, Vue,
 } from 'vue-property-decorator';
 import axios from 'axios';
 import moment from 'moment';
@@ -91,10 +91,15 @@ const assets = require.context('../assets/dataPage/', false, /\.png$/);
   },
 })
 export default class MapData extends Vue {
-  // private tableData: Array<object>;
+  private blockDataList: any;
+  private largeTransferArr: any;
+  private largeDealListArr: any;
+  private allLargeDealArr: any;
+  private allLiquidationArr: any;
+
   public data() {
     return {
-      blockDataList: null,
+      blockDataList: {},
       largeTransferArr: [],
       largeDealListArr: [],
       allLargeDealArr: [], // 期货大单
@@ -118,7 +123,7 @@ export default class MapData extends Vue {
     });
   }
 
-  private getBlockHight(coin) {
+  private getBlockHight(coin: string) {
     axios.post('https://rdtradeapi.jar.today/t/public/lydata/blocks', { coin }).then((data) => {
       const blockHeight = data.data.data.height;
       // 更新区块高度
@@ -130,7 +135,7 @@ export default class MapData extends Vue {
   private getLargetransfer() {
     axios.post('https://rdtradeapi.jar.today/t/public/lydata/largetransfer').then((data) => {
       const largeArr = data.data.data;
-      this.largeTransferArr = largeArr.map((item, i) => {
+      this.largeTransferArr = largeArr.map((item: any, i: number) => {
         const itemNew = item;
         // console.log(222,item)
         itemNew.fromAddress = itemNew.fromAddress.substr(0, 9);
@@ -147,7 +152,7 @@ export default class MapData extends Vue {
   private largeDealList() {
     axios.post('https://rdtradeapi.jar.today/t/public/data/largeDealList').then((data) => {
       const largeDealArr = data.data.data;
-      this.largeDealListArr = largeDealArr.map((item, i) => {
+      this.largeDealListArr = largeDealArr.map((item: any, i: number) => {
         const itemNew = item;
         const {
           time, coin, qty,
@@ -166,7 +171,7 @@ export default class MapData extends Vue {
   private allLargeDeal() {
     axios.post('https://rdtradeapi.jar.today/t/public/data/allLargeDeal', { size: 20 }).then((data) => {
       const arr = data.data.data;
-      this.allLargeDealArr = arr.map((item, index) => {
+      this.allLargeDealArr = arr.map((item: any, index: number) => {
         const itemNew = item;
         itemNew.createTime = moment(itemNew.ts).format('MM-DD HH:mm');
         itemNew.futuresName = itemNew.futuresName || itemNew.futures;
@@ -179,7 +184,7 @@ export default class MapData extends Vue {
   private allLiquidation() {
     axios.post('https://rdtradeapi.jar.today/t/public/data/allLiquidation', { pageNum: 1, pageSize: 20 }).then((data) => {
       const arr = data.data.data.list;
-      this.allLiquidationArr = arr.map((item, index) => {
+      this.allLiquidationArr = arr.map((item: any, index: number) => {
         const itemNew = item;
         itemNew.createTime = moment(itemNew.createTime).format('MM-DD HH:mm');
         itemNew.amount = Number(itemNew.amount).toFixed();
