@@ -10,8 +10,7 @@
           <div class="in_1"></div>
           <div class="in_2"></div>
           <div class="in_3"></div>
-          <!-- <img :src="item.img" alt="" /> -->
-          <img src="../assets/dataPage/BTC.png" alt="" />
+          <img :src="item.img" alt="" />
         </div>
         <div class="info">
           <p>
@@ -124,7 +123,7 @@ export default class MapData extends Vue {
       Object.keys(arr).forEach((item) => {
         arr[item].img = assets(`./${item}.png`);
         // arr[item].img = require(`../assets/dataPage/${item}.png`);
-        // this.getBlockHight(item);
+        this.getBlockHight(item);
       });
       this.blockDataList = arr;
     });
