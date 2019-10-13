@@ -85,6 +85,7 @@ import moment from 'moment';
 import Map from '../components/echarts/Map.vue';
 
 const assets = require.context('../assets/dataPage/', false, /\.png$/);
+
 @Component({
   components: {
     Map,
@@ -92,9 +93,13 @@ const assets = require.context('../assets/dataPage/', false, /\.png$/);
 })
 export default class MapData extends Vue {
   private blockDataList: any;
+
   private largeTransferArr: any;
+
   private largeDealListArr: any;
+
   private allLargeDealArr: any;
+
   private allLiquidationArr: any;
 
   public data() {

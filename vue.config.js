@@ -6,4 +6,5 @@ module.exports = {
   //   : '/',
   // outputDir: 'docs',
   // assets: 'assets',
+  publicPath: './',
 };
