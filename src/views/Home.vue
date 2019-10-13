@@ -9,7 +9,7 @@
     <el-carousel :interval="5000" arrow="always" height="500px">
       <el-carousel-item v-for="item in carouselArr" :key="item.id">
         <h3>{{ item.title }}</h3>
-        <div>{{ item.content }}</div>
+        <div class="carousel__content">{{ item.content }}</div>
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -28,18 +28,17 @@ export default class Home extends Vue {
   public data() {
     return {
       carouselArr: [
-        //         { id: 1,
-        //           title: '全球加密数字领域主经纪商',
-        //           content: 'xxxxx是基于xxx的全球加密数字领域主经纪商，向数字资产'+'
-        // 和加密货币的专业级客户提供革命性的交易产品及经纪服务'},
-        //         { id: 2,
-        //           title: '全球加密数字领域主经纪商',
-        //           content: 'xxxxx是基于xxx的全球加密数字领域主经纪商，向数字资产'+'
-        // 和加密货币的专业级客户提供革命性的交易产品及经纪服务'},
-        //         { id: ,
-        //           title: '全球加密数字领域主经纪商',
-        //           content: 'xxxxx是基于xxx的全球加密数字领域主经纪商，向数字资产'+'
-        // 和加密货币的专业级客户提供革命性的交易产品及经纪服务'},
+                { id: 1,
+                  title: '比特币-BTC',
+                  content: '比特币（Bitcoin）的概念最初由中本聪在2008年11月1日提出，并于2009年1月3日正式诞生 [1]  。根据中本聪的思路设计发布的开源软件以及建构其上的P2P网络。比特币是一种P2P形式的虚拟的加密数字货币。点对点的传输意味着一个去中心化的支付系统。'},
+        { id: 2,
+                  title: '全球加密数字领域主经纪商',
+                  content: 'xxxxx是基于xxx的全球加密数字领域主经纪商，向数字资产'+
+        '和加密货币的专业级客户提供革命性的交易产品及经纪服务'},
+        { id: 3,
+                  title: '全球加密数字领域主经纪商',
+                  content: 'xxxxx是基于xxx的全球加密数字领域主经纪商，向数字资产'+
+        '和加密货币的专业级客户提供革命性的交易产品及经纪服务'},
       ],
     };
   }
@@ -110,6 +109,11 @@ export default class Home extends Vue {
         background-image: linear-gradient(180deg, #151515, #161616);
       }
     }
+  }
+  .carousel__content{
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
   }
 }
 </style>
