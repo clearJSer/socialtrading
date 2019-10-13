@@ -1,6 +1,9 @@
 # hello
 
 ## Project setup
+
+安装 node.js 
+
 ```
 npm install
 ```
@@ -27,3 +30,4 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+

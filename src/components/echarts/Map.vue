@@ -411,7 +411,7 @@ export default {
         },
         visualMap: {
           // 图例值控制
-          show: true,
+          show: false,
           type: 'piecewise',
           pieces: [{
             max: 80,
