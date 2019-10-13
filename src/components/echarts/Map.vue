@@ -22,6 +22,13 @@ export default {
 
       const geoCoordMap = {
         上海: [121.4648, 31.2891],
+        纽约: [-73.861952,40.845873],
+        首尔: [126.97222,37.584153],
+        西雅图: [-122.326575,47.600656],
+        北京: [116.401889,39.894319],
+        东京: [139.664277,35.796692],
+        南非: [23.305974,-30.169693],
+        莫斯科: [37.620184,55.751286],
         尼日利亚: [-4.388361, 11.186148],
         美国洛杉矶: [-118.24311, 34.052713],
         香港邦泰: [114.195466, 22.282751],
@@ -47,13 +54,30 @@ export default {
         墨西哥: [-99.094092, 19.365711],
         加拿大温哥华: [-123.023921, 49.311753],
       };
-      const placeArr = ['上海', '美国洛杉矶', '香港邦泰', '美国加州', '巴西', '美国洛杉矶', '美国洛杉矶', '上海', '上海'];
+      const placeArr = ['纽约','纽约','北京','北京','纽约','纽约','北京','北京','上海',
+      '美国洛杉矶', '香港邦泰', '美国加州', '巴西', '美国洛杉矶', '美国洛杉矶', '东京', '上海' ,
+      '澳大利亚墨尔本', '乌拉圭蒙得维的亚', '南非','莫斯科'];
       const BJData = [
         [{
           name: '尼日利亚',
           value: randomData(),
-        }, {
+        },
+         {
           name: '上海',
+        }],
+        [{
+          name: '北京',
+          value: randomData(),
+        },
+         {
+          name: '纽约',
+        }],
+        [{
+          name: '东京',
+          value: randomData(),
+        },
+         {
+          name: '莫斯科',
         }],
         [{
           name: '美国洛杉矶',
@@ -199,7 +223,7 @@ export default {
         for (let i = 0; i < data.length; i += 1) {
           const dataItem = data[i];
           const fromCoord = geoCoordMap[placeArr[Math.floor(Math.random() * placeArr.length)]];
-          const toCoord = geoCoordMap[dataItem[1].name];
+          const toCoord = geoCoordMap[placeArr[Math.floor(Math.random() * placeArr.length)]];
           if (fromCoord && toCoord) {
             res.push([{
               coord: fromCoord,
@@ -245,42 +269,42 @@ export default {
             show: true,
             color: '#6ed1ff',
             period: 4, // 箭头指向速度，值越小速度越快
-            trailLength: 0.03, // 特效尾迹长度[0,1]值越大，尾迹越长重
+            trailLength: 1, // 特效尾迹长度[0,1]值越大，尾迹越长重
             symbol: 'circle', // 箭头图标
             symbolSize: 3, // 图标大小
           },
           lineStyle: {
             normal: {
               color: '#0bc7f3',
-              width: 0.5, // 尾迹线条宽度
+              width: 0.3, // 尾迹线条宽度
               opacity: 0, // 尾迹线条透明度
               curveness: 0.1, // 尾迹线条曲直度
             },
           },
           data: convertData(item[1]),
         },
-        // {
-        //       name:'攻击线2',
-        //       type: "lines",
-        //       zlevel: 2,
-        //       effect: {
-        //           show: true,
-        //           color: '#6ed1ff',
-        //           period: 4, //箭头指向速度，值越小速度越快
-        //           trailLength: 0.02, //特效尾迹长度[0,1]值越大，尾迹越长重
-        //           symbol: "circle", //箭头图标
-        //           symbolSize: 3 //图标大小
-        //       },
-        //       lineStyle: {
-        //           normal: {
-        //               color: '#FF0000',
-        //               width: 1, //尾迹线条宽度
-        //               opacity: 0, //尾迹线条透明度
-        //               curveness: -0.1 //尾迹线条曲直度
-        //           }
-        //       },
-        //       data: convertData2(item[1])
-        //   },
+        {
+          name:'攻击线2',
+          type: "lines",
+          zlevel: 2,
+          effect: {
+              show: true,
+              color: '#6ed1ff',
+              period: 4, //箭头指向速度，值越小速度越快
+              trailLength: 0.02, //特效尾迹长度[0,1]值越大，尾迹越长重
+              symbol: "circle", //箭头图标
+              symbolSize: 3 //图标大小
+          },
+          lineStyle: {
+              normal: {
+                  color: '#FF0000',
+                  width: 1, //尾迹线条宽度
+                  opacity: 0, //尾迹线条透明度
+                  curveness: -0.1 //尾迹线条曲直度
+              }
+          },
+          data: convertData2(item[1])
+        },
         {
           type: 'effectScatter',
           coordinateSystem: 'geo',
@@ -291,28 +315,28 @@ export default {
             brushType: 'stroke', // 波纹绘制方式 stroke, fill
             scale: 4, // 波纹圆环最大限制，值越大波纹越大
           },
-          label: {
-            normal: {
-              show: false,
-              position: 'right', // 显示位置
-              offset: [5, 0], // 偏移设置
-              formatter: '{b}', // 圆环显示文字
-            },
-            emphasis: {
-              show: true,
-              color: '#FF6A6A',
-            },
-          },
+          // label: {
+          //   normal: {
+          //     show: false,
+          //     position: 'right', // 显示位置
+          //     offset: [5, 0], // 偏移设置
+          //     formatter: '{b}', // 圆环显示文字
+          //   },
+          //   emphasis: {
+          //     show: true,
+          //     color: '#FF6A6A',
+          //   },
+          // },
           symbol: 'circle',
           symbolSize(val) {
-            return 8 + val[2] / 1000; // 圆环大小
+            return 5; // 圆环大小
           },
           itemStyle: {
             normal: {
               show: true,
             },
             emphasis: {
-              show: true,
+              show: false,
               color: '#FF6A6A',
             },
           },
@@ -324,7 +348,7 @@ export default {
         // 被攻击点
         {
           type: 'scatter',
-          coordinateSystem: 'geo',
+          coordinateSystem: 'circle',
           zlevel: 2,
           rippleEffect: {
             period: 4,
@@ -334,7 +358,7 @@ export default {
           label: {
             normal: {
               show: true,
-              color: 'red',
+              color: 'green',
               position: 'right',
               formatter: '{b}',
             },
@@ -348,7 +372,7 @@ export default {
           itemStyle: {
             normal: {
               show: true,
-              color: 'red',
+              color: 'green',
             },
             emphasis: {
               show: true,
@@ -387,20 +411,20 @@ export default {
         },
         visualMap: {
           // 图例值控制
-          show: false,
+          show: true,
           type: 'piecewise',
           pieces: [{
             max: 80,
-            color: 'red',
+            color: '#6ed1ff',
           },
           {
             min: 80,
             max: 120,
-            color: 'yellow',
+            color: '#6ed1ff',
           },
           {
             min: 120,
-            color: 'green',
+            color: '#6ed1ff',
           },
           ],
           calculable: true,
@@ -415,7 +439,7 @@ export default {
           },
           roam: false, // 是否允许缩放
           layoutCenter: ['40%', '35%'], // 地图位置
-          layoutSize: '120%',
+          layoutSize: '140%',
           itemStyle: {
             normal: {
               show: 'true',
