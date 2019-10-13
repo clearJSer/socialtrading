@@ -121,8 +121,9 @@ export default class MapData extends Vue {
     axios.post('https://rdtradeapi.jar.today/t/public/lydata/marketCap', {}).then((data) => {
       const arr = data.data.data;
       Object.keys(arr).forEach((item) => {
-        // arr[item].img = assets(`./${item}.png`);
-        arr[item].img = require(`../assets/dataPage/${item}.png`);
+        arr[item].img = assets(`./${item}.png`);
+        console.log(22,assets,assets(`./${item}.png`))
+        // arr[item].img = require(`../assets/dataPage/${item}.png`);
         this.getBlockHight(item);
       });
       this.blockDataList = arr;
