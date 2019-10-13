@@ -84,7 +84,7 @@ import axios from 'axios';
 import moment from 'moment';
 import Map from '../components/echarts/Map.vue';
 
-const assets = require.context('../assets/dataPage/', false, /\.png$/);
+const assets = require.context('./../assets/dataPage/', false, /\.png$/);
 
 @Component({
   components: {
@@ -122,6 +122,7 @@ export default class MapData extends Vue {
       const arr = data.data.data;
       Object.keys(arr).forEach((item) => {
         arr[item].img = assets(`./${item}.png`);
+        // arr[item].img = require(`../assets/dataPage/${item}.png`);
         this.getBlockHight(item);
       });
       this.blockDataList = arr;
