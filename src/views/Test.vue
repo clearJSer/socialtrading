@@ -17,6 +17,7 @@ export default class Test extends Vue {
 </script>
 <style lang="scss" scoped>
 .test{
+  padding: 30px;
   color: #fff;
 }
 </style>
