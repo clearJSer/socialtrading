@@ -3,3 +3,6 @@ declare module '*.vue' {
 
   export default Vue;
 }
+interface Screen{
+    deviceXDPI:string;
+}

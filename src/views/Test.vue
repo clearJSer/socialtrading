@@ -16,7 +16,7 @@ import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
   components: {},
 })
 export default class Test extends Vue {
-  private testInfo: string;
+  private testInfo !: string;
 
   private data() {
     return {
