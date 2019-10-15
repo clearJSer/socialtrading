@@ -438,7 +438,7 @@ export default {
             },
           },
           roam: false, // 是否允许缩放
-          layoutCenter: ['40%', '35%'], // 地图位置
+          layoutCenter: ['45%', '45%'], // 地图位置
           layoutSize: '140%',
           itemStyle: {
             normal: {

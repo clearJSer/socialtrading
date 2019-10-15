@@ -9,9 +9,9 @@
         <div class="iconBox">
           <div class="in_1"></div>
           <div class="in_2"></div>
-          <div class="in_3"></div>
+          <div class="in_3">{{item.icon}}</div>
           <!-- <img :src="item.img" alt="" /> -->
-          <img :src="require('../assets/dataPage/'+ item.imgName +'.png')" alt="">
+          <!-- <img :src="require('../assets/dataPage/'+ item.imgName +'.png')" alt=""> -->
         </div>
         <div class="info">
           <p>
@@ -85,7 +85,7 @@ import axios from 'axios';
 import moment from 'moment';
 import Map from '../components/echarts/Map.vue';
 
-const assets = require.context('./../assets/dataPage/', false, /\.png$/);
+// const assets = require.context('./../assets/dataPage/', false, /\.png$/);
 
 @Component({
   components: {
@@ -123,7 +123,8 @@ export default class MapData extends Vue {
       const arr = data.data.data;
       Object.keys(arr).forEach((item) => {
         // arr[item].img = assets(`./${item}.png`);
-        arr[item].imgName = item;
+        // arr[item].imgName = item;
+        arr[item].icon = item;
         // arr[item].img = require(`../assets/dataPage/${item}.png`);
         this.getBlockHight(item);
       });
@@ -259,9 +260,12 @@ export default class MapData extends Vue {
           height: 80%;
         }
         &:nth-child(3) {
-          opacity: 0.6;
-          width: 50%;
-          height: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 60%;
+          height: 60%;
+          color: #fff;
         }
       }
     }
