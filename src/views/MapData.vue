@@ -10,7 +10,8 @@
           <div class="in_1"></div>
           <div class="in_2"></div>
           <div class="in_3"></div>
-          <img :src="item.img" alt="" />
+          <!-- <img :src="item.img" alt="" /> -->
+          <img :src="require('../assets/dataPage/'+ item.imgName +'.png')" alt="">
         </div>
         <div class="info">
           <p>
@@ -55,10 +56,10 @@
         <div class="itemTitle">期货爆仓</div>
         <div class="tableBox">
           <el-table :data="allLiquidationArr" style="width: 100%" height="250">
-            <el-table-column prop="createTime" label="时间" width="100"> </el-table-column>
-            <el-table-column prop="futureName" label="合约" width="100"> </el-table-column>
-            <el-table-column prop="type" label="方向" width="100"> </el-table-column>
-            <el-table-column prop="amount" align="right" label="数量" width="100"> </el-table-column>
+            <el-table-column prop="createTime" label="时间" > </el-table-column>
+            <el-table-column prop="futureName" label="合约" > </el-table-column>
+            <el-table-column prop="type" label="方向" > </el-table-column>
+            <el-table-column prop="amount" align="right" label="数量" > </el-table-column>
           </el-table>
         </div>
       </div>
@@ -122,6 +123,7 @@ export default class MapData extends Vue {
       const arr = data.data.data;
       Object.keys(arr).forEach((item) => {
         arr[item].img = assets(`./${item}.png`);
+        arr[item].imgName = item;
         // arr[item].img = require(`../assets/dataPage/${item}.png`);
         this.getBlockHight(item);
       });
@@ -202,6 +204,7 @@ export default class MapData extends Vue {
 </script>
 <style lang="scss">
 .mapData__container {
+  width: 100%;
   height: 100%;
   position: relative;
   display: flex;
@@ -210,14 +213,14 @@ export default class MapData extends Vue {
   color: #fff;
 }
 .map__box {
-  width: 1200px;
-  height: 600px;
+  width: 80%;
+  height: 80%;
 }
 // 区块高度
 .table__box {
   position: absolute;
-  left: 20px;
-  top: 100px;
+  left: 3%;
+  top: 10%;
   z-index: 2;
   display: flex;
   justify-content: space-around;
@@ -289,6 +292,7 @@ export default class MapData extends Vue {
 }
 // 大额转账
 .block__box {
+  width: 100%;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -299,7 +303,8 @@ export default class MapData extends Vue {
   justify-content: space-around;
   flex-direction: column;
   .item {
-    width: 400px;
+    // width: 30%;
+    min-width: 400px;
     overflow: hidden;
     height: 176px;
     position: absolute;
@@ -349,15 +354,15 @@ export default class MapData extends Vue {
   }
   .Blowing {
     right: 910px;
-    bottom: 30px;
+    bottom: 10%;
   }
   .bigOrder_xian {
     right: 480px;
-    bottom: 30px;
+    bottom: 10%;
   }
   .bigOrder_qi {
     right: 30px;
-    bottom: 30px;
+    bottom: 10%;
   }
   .bigTransfer {
     right: 30px;
